@@ -66,3 +66,8 @@ python manage.py runserver
 `
 localhost:8000/admin/
 `
+
+* Exportar os dados dos ritmistas em csv
+`
+localhost:8000/csv/
+`

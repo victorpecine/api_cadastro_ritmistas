@@ -62,11 +62,11 @@ def exporta_csv(request):
     writer.writerow(['NOME', 'CURSO', 'NAIPE', 'GRUPO',
                      'DATA DE NASCIMENTO', 'CPF', 'TELEFONE',
                      'DATA DE ENTRADA', 'DATA DE SAÍDA'])
-
+    # dados inseridos nas colunas
     ritmistas = Ritmista.objects.all().values_list('nome', 'curso', 'naipe', 'grupo',
                                                    'data_nascimento', 'cpf', 'telefone',
                                                    'data_entrada', 'data_saida')
-
+    # escrevendo os dados de cada ritmista
     for ritmista in ritmistas:
         writer.writerow(ritmista)
 

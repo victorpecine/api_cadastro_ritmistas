@@ -1,14 +1,21 @@
 # API para cadastro de ritmistas
 
-Desenvovlido em Python 3.9.2
-
-## APP instalados
-
+## Tecnologias usadas
+* Python 3.9.2
 * [Django 3.1.7](https://docs.djangoproject.com/en/3.1/topics/install/)
 * [Django Rest Framework 3.12.2](https://www.django-rest-framework.org/)
-* [MySQL Connector Python 8.0.23](https://pypi.org/project/mysql-connector-python/)
-* [MySQL Client 2.0.3](https://pypi.org/project/mysqlclient/)
+* [Banco de dados MySQL instalado no Docker](https://hub.docker.com/_/mysql)
+* Gerenciador MySQL Workbench
+    * [MySQL Connector Python 8.0.23](https://pypi.org/project/mysql-connector-python/)
+    * [MySQL Client 2.0.3](https://pypi.org/project/mysqlclient/)
+* Editor de código Visual Studio Code
+* Sistema operacional Windows 10 Home Single Language
 
+## APPS instalados
+* Todos os app utilizados na aplicação estão em _requirements.txt_
+
+## Formatação dos dados de retorno
+* JavaScript Object Notation (JSON)
 
 ## Aplicação
 * Realizar o cadastro de um novo membro com os campos

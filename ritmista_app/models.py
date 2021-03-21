@@ -41,12 +41,3 @@ class Ritmista(models.Model):
 
     def __str__(self):
         return self.nome
-
-
-# class RitmistasNaipe(models.Model):
-#     naipe_ritmista = models.OneToOneField(Ritmista, on_delete=models.DO_NOTHING, to_field='naipe',
-#                                           related_name='naipe_ritmista', unique=True)
-#     nome_ritmista = models.OneToOneField(Ritmista, on_delete=models.DO_NOTHING, to_field='nome',
-#                                          related_name='nome_ritmista', unique=True)
-#     curso_ritmista = models.OneToOneField(Ritmista, on_delete=models.DO_NOTHING, to_field='curso',
-#                                           unique=True)

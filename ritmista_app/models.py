@@ -25,14 +25,28 @@ class Curso(models.Model):
 
 class Ritmista(models.Model):
     nome = models.CharField(max_length=200, blank=False, null=False, db_column='Nome')
-    curso = models.ForeignKey(Curso, on_delete=models.DO_NOTHING, default=None, db_column='Curso') 
+    curso = models.ForeignKey(Curso, on_delete=models.DO_NOTHING, default=None, db_column='Curso')
     naipe = models.ForeignKey(Naipe, on_delete=models.DO_NOTHING, default=None, db_column='Naipe')
     grupo = models.ManyToManyField(Grupo, blank=False, db_column='Grupo', default=None)
-    data_entrada = models.DateField(blank=False, null=False, db_column='Data de entrada', verbose_name='Data de entrada')
-    data_nascimento = models.DateField(blank=False, null=False, db_column='Data de nascimento', verbose_name='Data de nascimento', default=None)
-    cpf = models.CharField(max_length=11, blank=False, null=False, db_column='CPF', verbose_name='CPF', unique=True, default=None)
-    telefone = models.CharField(max_length=11, blank=False, null=False, db_column='Telefone', default=None)
-    data_saida = models.DateField(blank=True, null=True, db_column='Data de saída', verbose_name='Data de saída')
+    data_entrada = models.DateField(blank=False, null=False,
+                                    db_column='Data de entrada', verbose_name='Data de entrada')
+    data_nascimento = models.DateField(blank=False, null=False, db_column='Data de nascimento',
+                                       verbose_name='Data de nascimento', default=None)
+    cpf = models.CharField(max_length=11, blank=False, null=False,
+                           db_column='CPF', verbose_name='CPF', unique=True, default=None)
+    telefone = models.CharField(max_length=11, blank=False, null=False,
+                                db_column='Telefone', default=None)
+    data_saida = models.DateField(blank=True, null=True,
+                                  db_column='Data de saída', verbose_name='Data de saída')
 
     def __str__(self):
         return self.nome
+
+
+# class RitmistasNaipe(models.Model):
+#     naipe_ritmista = models.OneToOneField(Ritmista, on_delete=models.DO_NOTHING, to_field='naipe',
+#                                           related_name='naipe_ritmista', unique=True)
+#     nome_ritmista = models.OneToOneField(Ritmista, on_delete=models.DO_NOTHING, to_field='nome',
+#                                          related_name='nome_ritmista', unique=True)
+#     curso_ritmista = models.OneToOneField(Ritmista, on_delete=models.DO_NOTHING, to_field='curso',
+#                                           unique=True)

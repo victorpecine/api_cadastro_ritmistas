@@ -1,7 +1,7 @@
+from rest_framework import routers
 from django.contrib import admin
 from django.urls import path, include
-from ritmista_app.views import *
-from rest_framework import routers
+from ritmista_app.views import CursosViewset, GruposViewset, NaipesViewset, RitmistasViewset, ListaRitmistasNaipe
 
 # rota principal
 router = routers.DefaultRouter()
@@ -13,5 +13,6 @@ router.register('ritmistas', RitmistasViewset, basename='Ritmistas')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('naipe/<int:pk>/ritmistas/', ListaRitmistasNaipe.as_view())
 ]

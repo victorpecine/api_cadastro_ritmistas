@@ -8,6 +8,7 @@ class Grupos(admin.ModelAdmin):
     search_fields = ('grupo',)
     list_filter = ('grupo',)
 
+
 admin.site.register(Grupo, Grupos)
 
 
@@ -16,6 +17,7 @@ class Naipes(admin.ModelAdmin):
     list_display_links = ('id', 'naipe')
     search_fields = ('naipe',)
     list_filter = ('naipe',)
+
 
 admin.site.register(Naipe, Naipes)
 
@@ -26,6 +28,7 @@ class Cursos(admin.ModelAdmin):
     search_fields = ('curso',)
     list_filter = ('curso',)
 
+
 admin.site.register(Curso, Cursos)
 
 
@@ -34,5 +37,6 @@ class Ritmistas(admin.ModelAdmin):
     list_display_links = ('nome', 'naipe')
     search_fields = ('nome', 'naipe', 'curso')
     list_filter = ('naipe', 'data_entrada',)
+
 
 admin.site.register(Ritmista, Ritmistas)

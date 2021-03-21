@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ritmista_app.models import *
+from ritmista_app.models import Curso, Grupo, Naipe, Ritmista
 
 
 class CursoSerializer(serializers.ModelSerializer):
@@ -24,3 +24,9 @@ class RitmistaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ritmista
         fields = '__all__'
+
+
+class ListaRitmistasNaipeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ritmista
+        fields = ['nome', 'curso']

@@ -2,7 +2,8 @@ from rest_framework import routers
 from django.contrib import admin
 from django.urls import path, include
 from ritmista_app.views import (CursosViewset, GruposViewset, NaipesViewset,
-                                RitmistasViewset, ListaRitmistasNaipe)
+                                RitmistasViewset, ListaRitmistasNaipe, exporta_csv)
+from ritmista_app import views
 
 # rota principal
 router = routers.DefaultRouter()
@@ -15,5 +16,6 @@ router.register('ritmistas', RitmistasViewset, basename='Ritmistas')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('naipe/<int:pk>/ritmistas/', ListaRitmistasNaipe.as_view())
+    path('naipe/<int:pk>/ritmistas/', ListaRitmistasNaipe.as_view()),
+    path('csv', views.exporta_csv, name='exporta_csv')
 ]

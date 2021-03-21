@@ -4,6 +4,9 @@ from ritmista_app.serializer import (CursoSerializer, GrupoSerializer, NaipeSeri
                                      RitmistaSerializer, ListaRitmistasNaipeSerializer)
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+import csv
+from django.http import HttpResponse
+from datetime import datetime
 
 
 class CursosViewset(viewsets.ModelViewSet):
@@ -47,3 +50,24 @@ class ListaRitmistasNaipe(generics.ListAPIView):
     serializer_class = ListaRitmistasNaipeSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
+
+def exporta_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=ritmistas.csv'
+    # encode UTF-8 no csv
+    response.write(u'\ufeff'.encode('utf8'))
+    writer = csv.writer(response)
+    # nome das colunas no csv
+    writer.writerow(['NOME', 'CURSO', 'NAIPE', 'GRUPO',
+                     'DATA DE NASCIMENTO', 'CPF', 'TELEFONE',
+                     'DATA DE ENTRADA', 'DATA DE SAÍDA'])
+
+    ritmistas = Ritmista.objects.all().values_list('nome', 'curso', 'naipe', 'grupo',
+                                                   'data_nascimento', 'cpf', 'telefone',
+                                                   'data_entrada', 'data_saida')
+
+    for ritmista in ritmistas:
+        writer.writerow(ritmista)
+
+    return response

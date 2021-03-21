@@ -27,6 +27,9 @@ class RitmistaSerializer(serializers.ModelSerializer):
 
 
 class ListaRitmistasNaipeSerializer(serializers.ModelSerializer):
+    # traz na tela o nome do curso com base no id
+    curso = serializers.ReadOnlyField(source='curso.curso')
+
     class Meta:
         model = Ritmista
         fields = ['nome', 'curso']

@@ -1,7 +1,8 @@
 from rest_framework import routers
 from django.contrib import admin
 from django.urls import path, include
-from ritmista_app.views import CursosViewset, GruposViewset, NaipesViewset, RitmistasViewset, ListaRitmistasNaipe
+from ritmista_app.views import (CursosViewset, GruposViewset, NaipesViewset,
+                                RitmistasViewset, ListaRitmistasNaipe)
 
 # rota principal
 router = routers.DefaultRouter()
